@@ -1,0 +1,942 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Bahdcoder - More-recipes",
+    "description": "More-Recipes provides a platform for users to share the awesome and exciting  recipe ideas they have invented or learnt.  Suppose a user comes up with a recipe,  he/she can post it on More-Recipes and  get feedback in form of reviews and votes from other users who explore that recipe. Users can also keep a list of their favorite recipes on the application.",
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "https://bahdcoder-more-recipes-swagger.herokuapp.com/api/v1",
+      "variables": {}
+    }
+  ],
+  "paths": {
+    "/users/signup": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Sign up a new user",
+        "description": "",
+        "operationId": "SignUpANewUser",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "name",
+                  "email",
+                  "password"
+                ],
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "frantz bahdcoder"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "frantz.bahdcoder@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "password"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/signin": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Sign a user in",
+        "description": "",
+        "operationId": "SignAUserIn",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "email",
+                  "password"
+                ],
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example": "bahdcoder@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "password"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Get all recipes",
+        "description": "Get all recipes",
+        "operationId": "GetAllRecipes",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Create a recipe",
+        "description": "Create a recipe",
+        "operationId": "CreateARecipe",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXJAZ21haWwuY29tIiwiaWF0IjoxNTE4Mjk3NDgzfQ.d4CjEtvW4e0q5ZkiwSVUOSNgH8UWzndF7Yu8XJWOg_0"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXJAZ21haWwuY29tIiwiaWF0IjoxNTE4Mjk3NDgzfQ.d4CjEtvW4e0q5ZkiwSVUOSNgH8UWzndF7Yu8XJWOg_0"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "title",
+                  "description",
+                  "imageUrl",
+                  "timeToCook",
+                  "ingredients",
+                  "procedure"
+                ],
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Vegetable Salad"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "this stuff is not nice, really. am just building my awesome api."
+                  },
+                  "imageUrl": {
+                    "type": "string",
+                    "example": "https://i.imgur.com/av7fjeA.jpg"
+                  },
+                  "timeToCook": {
+                    "type": "string",
+                    "example": "45"
+                  },
+                  "ingredients": {
+                    "type": "string",
+                    "example": "[\"5 cups rice\",\"1 kg liver\",\"groundnut oil\",\"3 handful green beans\",\"pepper\",\"spring onions\",\"3 maggi\"]"
+                  },
+                  "procedure": {
+                    "type": "string",
+                    "example": "[\"Wash and perboil rice and keep aside\",\"In a separate pot wash and season the meat until is tender\",\"In a pot add a vegetable oil,allow it to get hot.add your onions,tomatoes and pepper till is dry.\",\"In a bowl,dissolve Emma coconut powder with water,then add the water used for seasoning of meat,and the coconut water,cover it to boil\",\"Add the rice and taste the salt.\",\"When the water is almost dried up add all the cut veggies and cover the pot.turn it later and serve as you desired.\"]"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/d5291be8-bf6e-4b64-adc8-894e9fbd6100": {
+      "put": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Update a recipe",
+        "description": "Update a recipe",
+        "operationId": "UpdateARecipe",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXJAZ21haWwuY29tIiwiaWF0IjoxNTE4Mjk3NDgzfQ.d4CjEtvW4e0q5ZkiwSVUOSNgH8UWzndF7Yu8XJWOg_0"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXJAZ21haWwuY29tIiwiaWF0IjoxNTE4Mjk3NDgzfQ.d4CjEtvW4e0q5ZkiwSVUOSNgH8UWzndF7Yu8XJWOg_0"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "title",
+                  "description",
+                  "imageUrl",
+                  "time_to_cook",
+                  "ingredients",
+                  "procedure"
+                ],
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Vegetable Salad and fruits updated"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "this stuff is not nice, really. am just building my awesome api."
+                  },
+                  "imageUrl": {
+                    "type": "string",
+                    "example": "https://i.imgur.com/av7fjeA.jpg"
+                  },
+                  "time_to_cook": {
+                    "type": "string",
+                    "example": "45"
+                  },
+                  "ingredients": {
+                    "type": "string",
+                    "example": "[\"5 cups rice\",\"1 kg liver\",\"groundnut oil\",\"3 handful green beans\",\"pepper\",\"spring onions\",\"3 maggi\"]"
+                  },
+                  "procedure": {
+                    "type": "string",
+                    "example": "[\"Wash and perboil rice and keep aside\",\"In a separate pot wash and season the meat until is tender\",\"In a pot add a vegetable oil,allow it to get hot.add your onions,tomatoes and pepper till is dry.\",\"In a bowl,dissolve Emma coconut powder with water,then add the water used for seasoning of meat,and the coconut water,cover it to boil\",\"Add the rice and taste the salt.\",\"When the water is almost dried up add all the cut veggies and cover the pot.turn it later and serve as you desired.\"]"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/0ddff488-db86-46b5-9ca7-1e641268a1b1": {
+      "delete": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Delete a recipe",
+        "description": "Delete a recipe",
+        "operationId": "DeleteARecipe",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXJAZ21haWwuY29tIiwiaWF0IjoxNTE4Mjk3NDgzfQ.d4CjEtvW4e0q5ZkiwSVUOSNgH8UWzndF7Yu8XJWOg_0"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXJAZ21haWwuY29tIiwiaWF0IjoxNTE4Mjk3NDgzfQ.d4CjEtvW4e0q5ZkiwSVUOSNgH8UWzndF7Yu8XJWOg_0"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "title",
+                  "description",
+                  "access_token",
+                  "imageUrl",
+                  "time_to_cook",
+                  "ingredients",
+                  "procedure"
+                ],
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Vegetable Salad and fruits"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "this stuff is not nice, really. am just building my awesome api."
+                  },
+                  "access_token": {
+                    "type": "string",
+                    "example": "{{access_token}}"
+                  },
+                  "imageUrl": {
+                    "type": "string",
+                    "example": "https://i.imgur.com/av7fjeA.jpg"
+                  },
+                  "time_to_cook": {
+                    "type": "string",
+                    "example": "45"
+                  },
+                  "ingredients": {
+                    "type": "string",
+                    "example": "[\"5 cups rice\",\"1 kg liver\",\"groundnut oil\",\"3 handful green beans\",\"pepper\",\"spring onions\",\"3 maggi\"]"
+                  },
+                  "procedure": {
+                    "type": "string",
+                    "example": "[\"Wash and perboil rice and keep aside\",\"In a separate pot wash and season the meat until is tender\",\"In a pot add a vegetable oil,allow it to get hot.add your onions,tomatoes and pepper till is dry.\",\"In a bowl,dissolve Emma coconut powder with water,then add the water used for seasoning of meat,and the coconut water,cover it to boil\",\"Add the rice and taste the salt.\",\"When the water is almost dried up add all the cut veggies and cover the pot.turn it later and serve as you desired.\"]"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/d5291be8-bf6e-4b64-adc8-894e9fbd6100/upvote": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Upvote a recipe",
+        "description": "Upvote a recipe",
+        "operationId": "UpvoteARecipe",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          },
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhaGRjb2RlckBnbWFpbC5jb20iLCJpYXQiOjE1MDk2ODg3MDB9.avRS_pG8JndY28GnzM2hFan9N4B_y3kZuSoM7Hk040Q"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJhaGRjb2RlckBnbWFpbC5jb20iLCJpYXQiOjE1MDk2ODg3MDB9.avRS_pG8JndY28GnzM2hFan9N4B_y3kZuSoM7Hk040Q"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "z-"
+                ],
+                "type": "object",
+                "properties": {
+                  "z-": {
+                    "type": "string",
+                    "example": "{{access_token_2}}"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/d5291be8-bf6e-4b64-adc8-894e9fbd6100/reviews": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Get recipe reviews",
+        "description": "",
+        "operationId": "GetRecipeReviews",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      },
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Review a recipe",
+        "description": "Review a recipe",
+        "operationId": "ReviewARecipe",
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "access_token",
+                  "review"
+                ],
+                "type": "object",
+                "properties": {
+                  "access_token": {
+                    "type": "string",
+                    "example": "{{access_token_2}}"
+                  },
+                  "review": {
+                    "type": "string",
+                    "example": "This recipe is so awesome ! "
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/frontend/home": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Get home page recipes",
+        "description": "",
+        "operationId": "GetHomePageRecipes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/d5291be8-bf6e-4b64-adc8-894e9fbd6100/downvote": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Downvote a recipe",
+        "description": "",
+        "operationId": "DownvoteARecipe",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXIyQGdtYWlsLmNvbSIsImlhdCI6MTUxODI5OTA3M30.8p6zeDBNsN1iNFhH1xh9iBpsY5QKMCHfYx6tyltdXjM"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXIyQGdtYWlsLmNvbSIsImlhdCI6MTUxODI5OTA3M30.8p6zeDBNsN1iNFhH1xh9iBpsY5QKMCHfYx6tyltdXjM"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "x-access-token"
+                ],
+                "type": "object",
+                "properties": {
+                  "x-access-token": {
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXIyQGdtYWlsLmNvbSIsImlhdCI6MTUxODI5OTA3M30.8p6zeDBNsN1iNFhH1xh9iBpsY5QKMCHfYx6tyltdXjM"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/d5291be8-bf6e-4b64-adc8-894e9fbd6100/favorites": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Favorite a recipe",
+        "description": "",
+        "operationId": "FavoriteARecipe",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXIyQGdtYWlsLmNvbSIsImlhdCI6MTUxODI5OTA3M30.8p6zeDBNsN1iNFhH1xh9iBpsY5QKMCHfYx6tyltdXjM"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXIyQGdtYWlsLmNvbSIsImlhdCI6MTUxODI5OTA3M30.8p6zeDBNsN1iNFhH1xh9iBpsY5QKMCHfYx6tyltdXjM"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/profile/8e7c6ee6-e4b0-48f2-90dd-1d735e491d38": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Get user profile",
+        "description": "",
+        "operationId": "GetUserProfile",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/settings": {
+      "post": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Update user settings",
+        "description": "",
+        "operationId": "UpdateUserSettings",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXIyQGdtYWlsLmNvbSIsImlhdCI6MTUxODI5OTA3M30.8p6zeDBNsN1iNFhH1xh9iBpsY5QKMCHfYx6tyltdXjM"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXIyQGdtYWlsLmNvbSIsImlhdCI6MTUxODI5OTA3M30.8p6zeDBNsN1iNFhH1xh9iBpsY5QKMCHfYx6tyltdXjM"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "application/x-www-form-urlencoded"
+            },
+            "example": "application/x-www-form-urlencoded"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "required": [
+                  "reviewEmails",
+                  "favoriteModifiedEmail"
+                ],
+                "type": "object",
+                "properties": {
+                  "reviewEmails": {
+                    "type": "string",
+                    "example": "1"
+                  },
+                  "favoriteModifiedEmail": {
+                    "type": "string",
+                    "example": "0"
+                  }
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/favorites": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Get User Favorite recipes",
+        "description": "",
+        "operationId": "GetUserFavoriteRecipes",
+        "parameters": [
+          {
+            "name": "x-access-token",
+            "in": "header",
+            "description": "",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string",
+              "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXIyQGdtYWlsLmNvbSIsImlhdCI6MTUxODI5OTA3M30.8p6zeDBNsN1iNFhH1xh9iBpsY5QKMCHfYx6tyltdXjM"
+            },
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZyYW50ei5iYWhkY29kZXIyQGdtYWlsLmNvbSIsImlhdCI6MTUxODI5OTA3M30.8p6zeDBNsN1iNFhH1xh9iBpsY5QKMCHfYx6tyltdXjM"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/users/8e7c6ee6-e4b0-48f2-90dd-1d735e491d38/recipes": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Get user recipes",
+        "description": "",
+        "operationId": "GetUserRecipes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    },
+    "/recipes/273dcc6e-bd56-45b9-8bf3-2557ed8d189b/voters": {
+      "get": {
+        "tags": [
+          "Misc"
+        ],
+        "summary": "Get Recipe voters",
+        "description": "",
+        "operationId": "GetRecipeVoters",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "deprecated": false,
+        "security": [],
+        "x-operation-settings": {
+          "CollectParameters": false,
+          "AllowDynamicQueryParameters": false,
+          "AllowDynamicFormParameters": false,
+          "IsMultiContentStreaming": false
+        }
+      }
+    }
+  }
+}
