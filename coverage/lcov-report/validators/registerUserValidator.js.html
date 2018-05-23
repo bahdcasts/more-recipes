@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">43.48% </span>
+        <span class="strong">73.91% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>10/23</span>
+        <span class='fraction'>17/23</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">37.5% </span>
+        <span class="strong">68.75% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>6/16</span>
+        <span class='fraction'>11/16</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">60% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>3/5</span>
+        <span class='fraction'>4/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">43.48% </span>
+        <span class="strong">73.91% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>10/23</span>
+        <span class='fraction'>17/23</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line medium'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -143,9 +143,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -200,17 +200,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -283,18 +283,18 @@ export default class RegisterUserValidator {
    * Validate user email
    * @returns {null} null
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync validateEmail() {
-<span class="cstat-no" title="statement not covered" >    if (this.user.email) {</span>
-<span class="cstat-no" title="statement not covered" >      if (!isValidEmail(this.user.email)) {</span>
-<span class="cstat-no" title="statement not covered" >        this.errors.push('The email must be a valid email address.');</span>
+  async validateEmail() {
+    if (this.user.email) {
+      if (!isValidEmail(this.user.email)) {
+        this.errors.push('The email must be a valid email address.');
       } else {
-        const user = <span class="cstat-no" title="statement not covered" >await models.User.findOne({ where: { email: this.user.email } });</span>
-<span class="cstat-no" title="statement not covered" >        if (user) {</span>
-<span class="cstat-no" title="statement not covered" >          this.errors.push('A user with this email already exists.');</span>
+        const user = await models.User.findOne({ where: { email: this.user.email } });
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (user) {
+          this.errors.push('A user with this email already exists.');
         }
       }
     } else {
-<span class="cstat-no" title="statement not covered" >      this.errors.push('The email is required.');</span>
+      this.errors.push('The email is required.');
     }
   }
 }
@@ -304,7 +304,7 @@ export default class RegisterUserValidator {
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed May 23 2018 06:32:09 GMT+0100 (WAT)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed May 23 2018 06:46:49 GMT+0100 (WAT)
 </div>
 </div>
 <script src="../prettify.js"></script>

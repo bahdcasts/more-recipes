@@ -1,3 +1,4 @@
+import { User } from '../../../database/models'
 import validators from '../../../validators'
 
 const { RegisterUserValidator } = validators
@@ -62,6 +63,48 @@ describe('The RegisterUserValidator class', () => {
       // ASSERTION
       expect(validator.errors).toEqual([
         'The password must be longer than 5 characters.'
+      ])
+    })
+  })
+  describe('The validateEmail function', () => {
+    test('adds a required error if the email is not provided', async () => {
+      const validator = new RegisterUserValidator({
+        name: 'bahdcoder'
+      })
+
+      await validator.validateEmail()
+
+      expect(validator.errors).toEqual([
+        'The email is required.'
+      ])
+    })
+    test('adds an error if email is invalid', async () => {
+      const validator = new RegisterUserValidator({
+        email: 'bahdcoder@masd'
+      })
+
+      await validator.validateEmail()
+
+      expect(validator.errors).toEqual([
+        'The email must be a valid email address.'
+      ])
+    })
+
+    test('adds an email taken error if user already exists with that email', async () => {
+      await User.destroy({ where: {} })
+      await User.create({
+        name: 'bahdcoder',
+        email: 'bahdcoder@gmail.com',
+        password: 'password'
+      })
+      const validator = new RegisterUserValidator({
+        email: 'bahdcoder@gmail.com'
+      })
+
+      await validator.validateEmail()
+
+      expect(validator.errors).toEqual([
+        'A user with this email already exists.'
       ])
     })
   })
