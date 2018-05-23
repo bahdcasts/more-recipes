@@ -6,3 +6,4 @@ welcome.html
 /client/bin
 selenium-debug.log
 package-lock.json
+.DS_Store
