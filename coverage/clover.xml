@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1527057029034" clover="3.2.0">
-  <project timestamp="1527057029034" name="All files">
-    <metrics statements="281" coveredstatements="80" conditionals="150" coveredconditionals="25" methods="59" coveredmethods="17" elements="490" coveredelements="122" complexity="0" loc="281" ncloc="281" packages="5" files="27" classes="27">
+<coverage generated="1527057649633" clover="3.2.0">
+  <project timestamp="1527057649633" name="All files">
+    <metrics statements="281" coveredstatements="81" conditionals="150" coveredconditionals="26" methods="59" coveredmethods="17" elements="490" coveredelements="124" complexity="0" loc="281" ncloc="281" packages="5" files="27" classes="27">
       <package name="config">
         <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="0" coveredmethods="0"/>
         <file name="database.js" path="/Users/andeladeveloper/Code/Node/more-recipes/server/config/database.js">
@@ -119,7 +119,7 @@
         </file>
       </package>
       <package name="middleware">
-        <metrics statements="54" coveredstatements="4" conditionals="29" coveredconditionals="1" methods="14" coveredmethods="1"/>
+        <metrics statements="54" coveredstatements="5" conditionals="29" coveredconditionals="2" methods="14" coveredmethods="1"/>
         <file name="api.js" path="/Users/andeladeveloper/Code/Node/more-recipes/server/middleware/api.js">
           <metrics statements="3" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
           <line num="9" count="0" type="cond" truecount="0" falsecount="1"/>
@@ -192,11 +192,11 @@
           <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         </file>
         <file name="registerUserValidator.js" path="/Users/andeladeveloper/Code/Node/more-recipes/server/middleware/registerUserValidator.js">
-          <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-          <line num="12" count="1" type="stmt"/>
-          <line num="13" count="1" type="stmt"/>
-          <line num="14" count="1" type="cond" truecount="1" falsecount="1"/>
-          <line num="15" count="0" type="stmt"/>
+          <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+          <line num="12" count="2" type="stmt"/>
+          <line num="13" count="2" type="stmt"/>
+          <line num="14" count="2" type="cond" truecount="2" falsecount="0"/>
+          <line num="15" count="1" type="stmt"/>
           <line num="18" count="1" type="stmt"/>
         </file>
         <file name="signinUserValidator.js" path="/Users/andeladeveloper/Code/Node/more-recipes/server/middleware/signinUserValidator.js">
@@ -221,29 +221,29 @@
         </file>
         <file name="registerUserValidator.js" path="/Users/andeladeveloper/Code/Node/more-recipes/server/validators/registerUserValidator.js">
           <metrics statements="23" coveredstatements="23" conditionals="16" coveredconditionals="16" methods="5" coveredmethods="5"/>
-          <line num="14" count="11" type="stmt"/>
-          <line num="16" count="11" type="stmt"/>
-          <line num="25" count="4" type="stmt"/>
-          <line num="26" count="4" type="stmt"/>
-          <line num="27" count="4" type="stmt"/>
-          <line num="29" count="4" type="cond" truecount="2" falsecount="0"/>
-          <line num="30" count="2" type="stmt"/>
+          <line num="14" count="12" type="stmt"/>
+          <line num="16" count="12" type="stmt"/>
+          <line num="25" count="5" type="stmt"/>
+          <line num="26" count="5" type="stmt"/>
+          <line num="27" count="5" type="stmt"/>
+          <line num="29" count="5" type="cond" truecount="2" falsecount="0"/>
+          <line num="30" count="3" type="stmt"/>
           <line num="32" count="2" type="stmt"/>
-          <line num="41" count="6" type="cond" truecount="2" falsecount="0"/>
-          <line num="42" count="5" type="cond" truecount="2" falsecount="0"/>
-          <line num="43" count="3" type="stmt"/>
+          <line num="41" count="7" type="cond" truecount="2" falsecount="0"/>
+          <line num="42" count="6" type="cond" truecount="2" falsecount="0"/>
+          <line num="43" count="4" type="stmt"/>
           <line num="46" count="1" type="stmt"/>
-          <line num="56" count="6" type="cond" truecount="2" falsecount="0"/>
-          <line num="57" count="4" type="cond" truecount="2" falsecount="0"/>
-          <line num="58" count="2" type="stmt"/>
+          <line num="56" count="7" type="cond" truecount="2" falsecount="0"/>
+          <line num="57" count="5" type="cond" truecount="2" falsecount="0"/>
+          <line num="58" count="3" type="stmt"/>
           <line num="61" count="2" type="stmt"/>
-          <line num="71" count="7" type="cond" truecount="2" falsecount="0"/>
+          <line num="71" count="8" type="cond" truecount="2" falsecount="0"/>
           <line num="72" count="5" type="cond" truecount="2" falsecount="0"/>
           <line num="73" count="2" type="stmt"/>
           <line num="75" count="3" type="stmt"/>
           <line num="76" count="3" type="cond" truecount="2" falsecount="0"/>
           <line num="77" count="1" type="stmt"/>
-          <line num="81" count="2" type="stmt"/>
+          <line num="81" count="3" type="stmt"/>
         </file>
         <file name="signinUserValidator.js" path="/Users/andeladeveloper/Code/Node/more-recipes/server/validators/signinUserValidator.js">
           <metrics statements="13" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="0"/>

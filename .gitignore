@@ -7,3 +7,4 @@ welcome.html
 selenium-debug.log
 package-lock.json
 .DS_Store
+/coverage
