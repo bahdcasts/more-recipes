@@ -34,5 +34,36 @@ describe('The RegisterUserValidator class', () => {
       ])
     })
   })
+  describe('The validatePassword function ', () => {
+    test('adds a required error to the errors array if password is not provided', () => {
+      // ARRANGE
+      const validator = new RegisterUserValidator({
+        email: 'bahdcoder@gmail.com'
+      })
+
+      // ACTION
+      validator.validatePassword()
+
+      // ASSERTION
+      const { errors } = validator
+      expect(errors).toEqual([
+        'The password is required.'
+      ])
+    })
+    test('adds an error if password is less than 6 characters', () => {
+      // ARRANGE
+      const validator = new RegisterUserValidator({
+        password: 'bahd'
+      })
+      // ACTION
+
+      validator.validatePassword()
+
+      // ASSERTION
+      expect(validator.errors).toEqual([
+        'The password must be longer than 5 characters.'
+      ])
+    })
+  })
 })
 
