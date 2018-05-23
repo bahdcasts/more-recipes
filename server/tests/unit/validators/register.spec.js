@@ -113,5 +113,30 @@ describe('The RegisterUserValidator class', () => {
       ])
     })
   })
+  describe('The isValid function' , () => {
+    test('returns true if validation passes', async () => {
+      await User.destroy({ where: {} })
+      // arrange
+      const validator = new RegisterUserValidator({
+        name: 'bahdcoder',
+        email: 'bahdcoder@gmail.com',
+        password: 'password'
+      })
+
+      // action
+      const result = await validator.isValid()
+
+      // assertion
+      expect(result).toBe(true)
+    })
+    test('returns false for invalid data', async () => {
+      const validator = new RegisterUserValidator({
+        name: 'bahd'
+      })
+
+      const result = await validator.isValid()
+      expect(result).toBe(false)
+    })
+  })
 })
 
