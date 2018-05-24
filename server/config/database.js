@@ -9,16 +9,19 @@ const config = {
     database: process.env.DB_DATABASE,
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
-    logging: false
+    logging: false,
+    operatorsAliases: false
   },
   test: {
     dialect: 'sqlite',
     storage: 'database.sqlite',
-    logging: false
+    logging: false,
+    operatorsAliases: false
   },
   production: {
     connection_uri: process.env.DATABASE_URL,
-    logging: false
+    logging: true,
+    operatorsAliases: false
   }
 };
 
