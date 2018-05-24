@@ -1,3 +1,4 @@
+import faker from 'faker'
 import jwt from 'jsonwebtoken'
 import config from '../../../config'
 import middleware from '../../../middleware'
@@ -7,10 +8,9 @@ const { auth } = middleware
 
 describe('The auth middleware', () => {
   test('should call next if user is authenticated', async () => {
-    await User.destroy({ where: {} })
     const user = await User.create({
       name: 'bahdcoder',
-      email: 'bahdcoder@gmail.com',
+      email: faker.internet.email(),
       password: 'password'
     })
     const req = {
