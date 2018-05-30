@@ -28,4 +28,26 @@ describe('The user sign up tests', () => {
     const userFromDatabase = await User.find({ where: { email: fakeUser.email } })
     expect(userFromDatabase).toBeTruthy()
   })
+  test('should return validation error for duplicate email', async () => {
+    // arrange
+    // prepare fake data
+    const fakeUser = {
+      name: 'bahdcoder',
+      email: 'bahdcoder@gmail.com',
+      password: 'password'
+    }
+    // clean the database
+    await User.destroy({ where: {} })
+    // put a user into the database. (register a user before hand)
+    await User.create(fakeUser)
+
+    // action 
+    // POST REQUEST TO register user with duplicate email
+    const response = await supertest(app).post('/api/v1/users/signup').send(fakeUser)
+    // ASSERTION
+    // 1. making sure that the response from the server has a 422 status
+    expect(response.status).toBe(422)
+    // 2. making sure that the errors from our server match the scenario
+    expect(response.body).toMatchSnapshot()
+  })
 })

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The user sign up tests should return validation error for duplicate email 1`] = `
+Object {
+  "data": Object {
+    "errors": Array [
+      "A user with this email already exists.",
+    ],
+  },
+  "status": "fail",
+}
+`;
