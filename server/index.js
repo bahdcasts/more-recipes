@@ -42,9 +42,11 @@ app.use((req, res) => res.render('index'));
 
 
 db.sequelize.sync().then(() => {
-  app.listen(port, () => {
-     console.log(`APP RUNNING IN ${process.env.NODE_ENV} MODE ON PORT : ${process.env.PORT || 5678}`);
-  });
+  if (!module.parent) {
+    app.listen(port, () => {
+      console.log(`APP RUNNING IN ${process.env.NODE_ENV} MODE ON PORT : ${process.env.PORT || 5678}`);
+   });
+  }
 });
 
 export default app;

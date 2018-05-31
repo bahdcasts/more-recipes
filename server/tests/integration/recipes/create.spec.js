@@ -5,35 +5,15 @@ import supertest from 'supertest'
 
 import app from '../../../index'
 import config from '../../../config'
+import { generateUser, generateRecipe } from '../../utils/generate'
 import { User, Recipe } from '../../../database/models'
 
 describe('The create recipe process', () => {
   test('should create recipe and return the recipe details', async () => {
     // arrange
     // create fake recipe
-    const fakeRecipe = {
-      title: faker.lorem.sentence(),
-      description: faker.lorem.sentences(2),
-      timeToCook: 40,
-      imageUrl: faker.internet.url(),
-      ingredients: JSON.stringify([faker.lorem.sentence(), faker.lorem.sentence()]),
-      procedure: JSON.stringify([faker.lorem.sentence(), faker.lorem.sentence()])
-    }
-    // create fake user
-    const fakeUser = {
-      name: faker.name.findName(),
-      email: faker.internet.email(),
-      password: faker.internet.password()
-    }
-    // generate a jwt for the user
-    const user = await User.create({
-      name: fakeUser.name,
-      email: fakeUser.email,
-      password: bcrypt.hashSync(fakeUser.password, 1)
-    })
-
-    const token = jwt.sign({ email: user.email }, config.JWT_SECRET)
-
+    const fakeRecipe = await generateRecipe()
+    const { user, token } = await generateUser()
     // action
     // make an authenticated request to create a recipe
     const response = await supertest(app).post('/api/v1/recipes').send({
