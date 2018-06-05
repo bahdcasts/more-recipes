@@ -66,6 +66,7 @@ All api routes are prefixed with `/api/v1`
   * `email` Username of registered user
   * `password` Password of registered user
 
+* GET `/recipes/<recipeId>` for getting a single recipe
 * POST `/recipes` for creating new recipes posts. Required fields are:
   * `title` Name of the recipe
   * `ingredients` Ingredients for preparing the recipe (must be a valid json serialized array) 

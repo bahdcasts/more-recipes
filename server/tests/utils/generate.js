@@ -23,7 +23,7 @@ export const generateUser = async () => {
   return { user, token, fakeUser }
 }
 
-export const generateRecipe = async () => ({
+export const generateRecipe = () => ({
   title: faker.lorem.sentence(),
   description: faker.lorem.sentences(2),
   timeToCook: 40,
