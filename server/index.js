@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 import path from 'path';
 import cors from 'cors';
 import morgan from 'morgan';
